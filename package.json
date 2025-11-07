@@ -21,3 +21,6 @@
     "start": "npm run start --prefix server"
   }
 }
+"engines": {
+  "node": "22.x"
+}
