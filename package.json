@@ -1,12 +1,10 @@
 {
-  "name": "nextgen",
+  "name": "nextgen-server",
   "version": "1.0.0",
-  "private": true,
   "type": "module",
   "scripts": {
-    "build": "npm run build --prefix web",
-    "start": "npm run start --prefix server",
-    "dev": "nodemon server/index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "engines": {
     "node": "22.x"
