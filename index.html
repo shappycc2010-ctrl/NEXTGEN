@@ -1,51 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NEXTGEN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXTGEN Intro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- Welcome screen (shown first) -->
-  <div id="welcome-screen">
-    <h2>✨ Welcome to NEXTGEN 😀</h2>
+<body class="intro">
+  <div class="intro-container">
+    <h1 id="introText">THE FUTURE</h1>
+    <p id="subText"></p>
   </div>
 
-  <!-- Main content (hidden initially) -->
-  <div id="main-content" class="page-hidden">
-    <header class="header">
-      <div class="logo">NEXT<span>GEN</span></div>
-      <div class="voice-wave" aria-hidden>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-        <div class="wave-line"></div>
-      </div>
-    </header>
-
-    <main class="chat-area">
-      <div class="chat-box">
-        <div id="chat-box" class="messages"></div>
-
-        <div class="input-area">
-          <input id="user-input" type="text" placeholder="Ask NEXTGEN anything..." autocomplete="off" />
-          <button id="send-btn">Send</button>
-          <button id="mic-btn" title="Speak">🎤</button>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <script>
-    // Configure backend URL here
-    // Example: 'https://nextgen-raqd.onrender.com/api/chat' or '/api/chat' if same origin
-    window.NEXTGEN_API_URL = 'https://nextgen-raqd.onrender.com/api/chat';
-  </script>
   <script src="script.js"></script>
 </body>
-          </html>
+</html>
