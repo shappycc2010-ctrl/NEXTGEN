@@ -1,209 +1,49 @@
-/* 🌌 NEXTGEN Pink & Blue Neon Theme with Floating Particles + Animated Voice Waves */
-
-/* Reset */
+/* Reset and general setup */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #ff007f, #00d4ff);
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: white;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Floating particles in the background */
-body::before, body::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,0,127,0.25) 10%, transparent 70%),
-              radial-gradient(circle, rgba(0,212,255,0.25) 10%, transparent 70%);
-  background-size: 300px 300px;
-  animation: float 25s linear infinite;
-  z-index: 0;
-}
-
-body::after {
-  animation-delay: -12s;
-  opacity: 0.6;
-}
-
-@keyframes float {
-  from { transform: translate(0, 0) rotate(0deg); }
-  to { transform: translate(-200px, -200px) rotate(360deg); }
-}
-
-/* Neon glow animation */
-@keyframes glow {
-  0% { text-shadow: 0 0 10px #ff007f, 0 0 20px #00d4ff, 0 0 30px #ff007f; }
-  50% { text-shadow: 0 0 20px #00d4ff, 0 0 40px #ff007f, 0 0 60px #00d4ff; }
-  100% { text-shadow: 0 0 10px #ff007f, 0 0 20px #00d4ff, 0 0 30px #ff007f; }
-}
-
-/* Title/logo */
-h1 {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 40px;
-  animation: glow 2s ease-in-out infinite alternate;
-  letter-spacing: 2px;
-  z-index: 2;
-  position: relative;
-}
-
-/* ====== Voice Wave Animation ====== */
-.voice-wave {
-  position: absolute;
-  top: calc(50% - 180px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 220px;
-  height: 60px;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  z-index: 1;
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
 }
 
-.wave-line {
-  width: 5px;
-  height: 30px;
-  background: linear-gradient(180deg, #ff007f, #00d4ff);
-  border-radius: 10px;
-  animation: waveMove 1.2s ease-in-out infinite;
+/* Animated gradient background */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.wave-line:nth-child(2) { animation-delay: 0.1s; }
-.wave-line:nth-child(3) { animation-delay: 0.2s; }
-.wave-line:nth-child(4) { animation-delay: 0.3s; }
-.wave-line:nth-child(5) { animation-delay: 0.4s; }
-.wave-line:nth-child(6) { animation-delay: 0.5s; }
-.wave-line:nth-child(7) { animation-delay: 0.6s; }
-.wave-line:nth-child(8) { animation-delay: 0.7s; }
-
-@keyframes waveMove {
-  0%, 100% { height: 20px; opacity: 0.7; }
-  50% { height: 60px; opacity: 1; }
+/* Welcome text styling */
+.welcome h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease forwards;
 }
 
-/* Chat container */
-.chat-box {
-  width: 90%;
-  max-width: 500px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 2;
-  position: relative;
-}
-
-/* Chat messages */
-.messages {
-  flex: 1;
-  overflow-y: auto;
-  max-height: 400px;
-  padding: 10px;
-}
-
-.message {
-  margin: 10px 0;
-  padding: 10px 15px;
-  border-radius: 15px;
-  animation: fadeIn 0.4s ease;
-}
-
-.message.user {
-  background: rgba(255, 0, 127, 0.4);
-  align-self: flex-end;
-}
-
-.message.bot {
-  background: rgba(0, 212, 255, 0.4);
-  align-self: flex-start;
-}
-
-/* Input section */
-.input-area {
-  display: flex;
-  margin-top: 15px;
-}
-
-.input-area input {
-  flex: 1;
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.input-area button {
-  margin-left: 10px;
-  background: linear-gradient(45deg, #ff007f, #00d4ff);
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  color: white;
+/* Highlight "NEXTGEN" */
+.brand {
   font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+  color: #ffefba;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6), 0 0 20px #ffefba;
 }
 
-.input-area button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.9);
-}
-
-/* Fade animation */
+/* Fade-in animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-/* Welcome Screen */
-#welcome-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #ff007f, #00d4ff);
-  z-index: 5;
-  animation: fadeIn 1s ease;
-  transition: opacity 0.8s ease;
-}
-
-#welcome-screen h2 {
-  font-size: 2.5rem;
-  color: white;
-  text-align: center;
-  animation: glow 1.5s ease-in-out infinite alternate;
-}
-
-/* Scrollbar style */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ff007f, #00d4ff);
-  border-radius: 10px;
-       }
