@@ -1,4 +1,4 @@
-/* 🌌 NEXTGEN Pink & Blue Neon Theme with Floating Particles */
+/* 🌌 NEXTGEN Pink & Blue Neon Theme with Floating Particles + Animated Voice Waves */
 
 /* Reset */
 * {
@@ -19,14 +19,14 @@ body {
   position: relative;
 }
 
-/* Background floating particles */
+/* Floating particles in the background */
 body::before, body::after {
   content: "";
   position: absolute;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,0,127,0.3) 10%, transparent 70%),
-              radial-gradient(circle, rgba(0,212,255,0.3) 10%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,0,127,0.25) 10%, transparent 70%),
+              radial-gradient(circle, rgba(0,212,255,0.25) 10%, transparent 70%);
   background-size: 300px 300px;
   animation: float 25s linear infinite;
   z-index: 0;
@@ -37,7 +37,6 @@ body::after {
   opacity: 0.6;
 }
 
-/* Floating animation */
 @keyframes float {
   from { transform: translate(0, 0) rotate(0deg); }
   to { transform: translate(-200px, -200px) rotate(360deg); }
@@ -54,10 +53,46 @@ body::after {
 h1 {
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   animation: glow 2s ease-in-out infinite alternate;
   letter-spacing: 2px;
   z-index: 2;
+  position: relative;
+}
+
+/* ====== Voice Wave Animation ====== */
+.voice-wave {
+  position: absolute;
+  top: calc(50% - 180px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.wave-line {
+  width: 5px;
+  height: 30px;
+  background: linear-gradient(180deg, #ff007f, #00d4ff);
+  border-radius: 10px;
+  animation: waveMove 1.2s ease-in-out infinite;
+}
+
+.wave-line:nth-child(2) { animation-delay: 0.1s; }
+.wave-line:nth-child(3) { animation-delay: 0.2s; }
+.wave-line:nth-child(4) { animation-delay: 0.3s; }
+.wave-line:nth-child(5) { animation-delay: 0.4s; }
+.wave-line:nth-child(6) { animation-delay: 0.5s; }
+.wave-line:nth-child(7) { animation-delay: 0.6s; }
+.wave-line:nth-child(8) { animation-delay: 0.7s; }
+
+@keyframes waveMove {
+  0%, 100% { height: 20px; opacity: 0.7; }
+  50% { height: 60px; opacity: 1; }
 }
 
 /* Chat container */
@@ -149,4 +184,4 @@ h1 {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ff007f, #00d4ff);
   border-radius: 10px;
-    }
+       }
