@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXTGEN</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="chat-body">
+  <div class="chat-header">
+    <h1>NEXTGEN 🤖</h1>
+    <p class="tagline">Your AI Companion for the Future 🔮</p>
+  </div>
+
+  <div class="chat-container" id="chatContainer">
+    <div class="message bot">Hello! I’m NEXTGEN. How can I help you today?</div>
+  </div>
+
+  <div class="input-area">
+    <input
+      type="text"
+      id="userInput"
+      placeholder="Ask NEXTGEN anything..."
+      autocomplete="off"
+    />
+    <button id="sendBtn">Send</button>
+  </div>
+
+  <script>
+    const sendBtn = document.getElementById("sendBtn");
+    const userInput = document.getElementById("userInput");
+    const chatContainer = document.getElementById("chatContainer");
+
+    function appendMessage(sender, text) {
+      const message = document.createElement("div");
+      message.classList.add("message", sender);
+      message.textContent = text;
+      chatContainer.appendChild(message);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      appendMessage("user", text);
+      userInput.value = "";
+
+      try {
+        const response = await fetch("https://nextgen-raqd.onrender.com/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          appendMessage("bot", data.reply || "I’m thinking...");
+        } else {
+          appendMessage("bot", "Sorry, I couldn’t reach my brain 🧠 right now.");
+        }
+      } catch (err) {
+        appendMessage("bot", "⚠️ Connection error. Please try again.");
+      }
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    userInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+</body>
+    </html>
