@@ -3,28 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXTGEN</title>
+  <title>NEXTGEN 🤖</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="chat-body">
-  <div class="chat-header">
-    <h1>NEXTGEN 🤖</h1>
-    <p class="tagline">Your AI Companion for the Future 🔮</p>
-  </div>
+  <div class="chat-glow"></div>
 
-  <div class="chat-container" id="chatContainer">
-    <div class="message bot">Hello! I’m NEXTGEN. How can I help you today?</div>
-  </div>
+  <header class="chat-header">
+    <h1 class="logo">✨ NEXTGEN AI</h1>
+    <p class="tagline">The Future 🔮 Speaks Here</p>
+  </header>
 
-  <div class="input-area">
+  <main class="chat-container" id="chatContainer">
+    <div class="message bot">
+      👋 Hello! I’m <b>NEXTGEN</b> — your AI of the future.  
+      Ask me anything!
+    </div>
+  </main>
+
+  <footer class="input-area">
     <input
       type="text"
       id="userInput"
-      placeholder="Ask NEXTGEN anything..."
+      placeholder="Type your message..."
       autocomplete="off"
     />
-    <button id="sendBtn">Send</button>
-  </div>
+    <button id="sendBtn">Send 🚀</button>
+  </footer>
 
   <script>
     const sendBtn = document.getElementById("sendBtn");
@@ -34,7 +39,7 @@
     function appendMessage(sender, text) {
       const message = document.createElement("div");
       message.classList.add("message", sender);
-      message.textContent = text;
+      message.innerHTML = text;
       chatContainer.appendChild(message);
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
@@ -42,7 +47,6 @@
     async function sendMessage() {
       const text = userInput.value.trim();
       if (!text) return;
-
       appendMessage("user", text);
       userInput.value = "";
 
@@ -55,12 +59,12 @@
 
         if (response.ok) {
           const data = await response.json();
-          appendMessage("bot", data.reply || "I’m thinking...");
+          appendMessage("bot", data.reply || "🤖 Thinking...");
         } else {
-          appendMessage("bot", "Sorry, I couldn’t reach my brain 🧠 right now.");
+          appendMessage("bot", "⚠️ Error: could not reach GPT right now.");
         }
       } catch (err) {
-        appendMessage("bot", "⚠️ Connection error. Please try again.");
+        appendMessage("bot", "⚠️ Connection issue. Please try again.");
       }
     }
 
